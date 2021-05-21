@@ -1,0 +1,46 @@
+###
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "email": "courriel@courriel.com",
+    "password": "courriel"
+}
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "courriel@courriel.com",
+    "password": "courriel"
+}
+
+###
+GET http://localhost:3000/api/sauces
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDk1MGUxNDFhZWFiYjQ2NDQzYTA0NDYiLCJpYXQiOjE2MjA5ODU4NTAsImV4cCI6MTYyMTA3MjI1MH0.Hhrn_LKd-ckgtFxDFtt9aDp5xC8QAjPybA3-qqQXD3w
+
+
+###
+POST http://localhost:3000/api/sauces/60942e493298672d2c1b933d/like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDk1MGUxNDFhZWFiYjQ2NDQzYTA0NDYiLCJpYXQiOjE2MjA5NzgxNDIsImV4cCI6MTYyMTA2NDU0Mn0.s-EwKpQ_82R6Q5Fdpc3YxUprnh1WSpDVnHpow4-inzg
+
+{
+    "userId": "60942cef3298672d2c1b933c",
+    "like": 0
+}
+
+###
+PUT http://localhost:3000/api/sauces/60942cef3298672d2c1b933c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDk1MGUxNDFhZWFiYjQ2NDQzYTA0NDYiLCJpYXQiOjE2MjA5NzgxNDIsImV4cCI6MTYyMTA2NDU0Mn0.s-EwKpQ_82R6Q5Fdpc3YxUprnh1WSpDVnHpow4-inzg
+
+{
+    "dislikes":5000
+}
+
+###
+DELETE http://localhost:3000/api/sauces/60942e493298672d2c1b933d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDk1MGUxNDFhZWFiYjQ2NDQzYTA0NDYiLCJpYXQiOjE2MjA5NzgxNDIsImV4cCI6MTYyMTA2NDU0Mn0.s-EwKpQ_82R6Q5Fdpc3YxUprnh1WSpDVnHpow4-inzg
+
