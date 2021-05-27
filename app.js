@@ -13,7 +13,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 // connexion à la base de données
-mongoose.connect('mongodb+srv://'+process.env.BASE_USER+':'+process.env.BASE_PASSWD+'@cluster0.5qxo7.mongodb.net/pekocko?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://'+process.env.BASE_USER+':'+process.env.BASE_PASSWD+'@'+process.env.CLUSTER+'.mongodb.net/'+process.env.BASE+'?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

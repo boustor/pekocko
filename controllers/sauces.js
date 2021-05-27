@@ -191,13 +191,9 @@ function clearLike(sauces, res, body, lastLike) {
     if (lastLike == 'L') {
         var nLike = 'likes';
         var ntLike = 'usersLiked';
-        //var vlike = '-1';
-        //var vtLike = body.userId;
     } else {
         var nLike = 'dislikes';
         var ntLike = 'usersDisliked';
-        //var vLike = '-1';
-        //var vtLike = body.userId;
     }
 
     var lQuery = {};
