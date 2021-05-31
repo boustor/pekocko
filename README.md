@@ -11,3 +11,6 @@ BASE = *base mongodb*
 lancer :
 npm install
 nodemon server
+
+* un control au niveau du mot de passe à été rajouté. Il doit faire 8 caractères au minimum
+avec au moins une majuscule, une minuscule et un caractère spéciale.
