@@ -25,21 +25,7 @@ exports.getOneSauces = (req, res, next) => {
 
 
 exports.createSauces = (req, res, next) => {
-    /*
-  const sauces = new Sauces({
-    userId:req.body.userId,
-    name: req.body.title,
-    manufacturer: req.body.manufacturer,
-    description: req.body.description,
-    mainPepper: req.body.mainPepper,
-    imageUrl: req.body.imageUrl,
-    heat:req.body.heat,
-    likes:req.body.likes,
-    dislikes:req.body.dislikes,
-    usersLiked: req.body.usersLiked,
-    usersDisliked: req.body.usersDisliked
-  });
-*/
+
     const saucesObject = JSON.parse(req.body.sauce);
     delete saucesObject._id;
     const sauces = new Sauces({
@@ -64,25 +50,27 @@ exports.createSauces = (req, res, next) => {
 };
 
 exports.modifySauces = (req, res, next) => {
+    let saucesObject;
+    if (req.file) {
+
+        Sauces.findOne({ _id: req.params.id })
+        .then(sauce => {
+            const filename = sauce.imageUrl.split('/images/')[1];
+            fs.unlink('images/'+filename, () => {})
+        });
+        console.log("nom sauce : "+req.file.filename)
+        saucesObject = {...JSON.parse(req.body.sauce),
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        }
+    } else{
+        saucesObject = {...req.body}
+    }
     /*
-    const sauces = new Sauces({
-      userId:req.body.userId,
-      name: req.body.title,
-      manufacturer: req.body.manufacturer,
-      description: req.body.description,
-      mainPepper: req.body.mainPepper,
-      imageUrl: req.body.imageUrl,
-      heat:req.body.heat,
-      likes:req.body.likes,
-      dislikes:req.body.dislikes,
-      usersLiked: req.body.usersLiked,
-      usersDisliked: req.body.usersDisliked
-    });
-    */
     const saucesObject = req.file ? {
         ...JSON.parse(req.body.sauce),
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : {...req.body }
+    */
     Sauces.updateOne({ _id: req.params.id }, {...saucesObject }).then(
         () => {
             res.status(201).json({

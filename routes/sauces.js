@@ -6,6 +6,7 @@ const auth = require('../middleware/auth');
 const owner = require('../middleware/isOwner');
 const saucesCtrl = require('../controllers/sauces');
 
+
 router.get('/', auth, saucesCtrl.getAllSauces);
 router.get('/:id', auth, saucesCtrl.getOneSauces);
 router.post('/', auth, multer, saucesCtrl.createSauces);
